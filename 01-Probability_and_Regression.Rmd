@@ -1,5 +1,5 @@
 ---
-title: "Causal Inference: *The Mixtape*"
+title: "Causal Inference: <br> *The Mixtape*"
 subtitle: "<it>Probability and Regression Review</it>"
 output: 
   learnr::tutorial:
@@ -63,24 +63,29 @@ tb <- tb %>%
 
 summary(tb[-1:-3])
 
+
 cli::cli_alert_success("Plotting Line of Best Fit")
-tb %>% 
-  lm(y ~ x, .) %>% 
-  ggplot(aes(x=x, y=y)) + 
-  ggtitle("OLS Regression Line") +
-  geom_point(size = 0.05, color = "black", alpha = 0.5) +
-  geom_smooth(method = lm, color = "black") +
-  annotate("text", x = -1.5, y = 30, color = "red", 
-           label = paste("Intercept = ", -0.0732608)) +
-  annotate("text", x = 1.5, y = -30, color = "blue", 
-           label = paste("Slope =", 5.685033))
+
+ggplot(data= tb, aes(x=x, y=y)) + 
+    ggtitle("OLS Regression Line") +
+    geom_point(size = 0.05, color = "black", alpha = 0.5) +
+    geom_smooth(aes(x=x, y=y), method = "lm", color = "black") +
+    annotate("text", x = -1.5, y = 30, color = "red", 
+             label = paste("Intercept = ", -0.0732608)) +
+    annotate("text", x = 1.5, y = -30, color = "blue", 
+             label = paste("Slope =", 5.685033))
+
+
 
 ```
 
+#### Questions:
+- What is the predicted value of $y$ when $x = 0$?
+- How much do we estimate $y$ increases by when $x$ increases by one unit?
+
+
 
 ```{r ols_2, exercise=TRUE, echo=FALSE}
-
-
 tb <- tibble(
   x = 9*rnorm(10),
   u = 36*rnorm(10),
@@ -92,7 +97,12 @@ tb <- tibble(
 cli::cli_alert_success("Results from OLS")
 summary(tb)
 colSums(tb)
+
+
 ```
+
+#### Questions
+- What is the average of the residuals $\hat{u}$ from our regression?
 
 
 
@@ -117,6 +127,10 @@ as_tibble(t(sapply(lm, coef))) %>%
   geom_histogram(aes(x), binwidth = 0.01)
 
 ```
+
+#### Questions
+- On average, do we think the estimate is close to the true value of $\beta_1 = 2$?
+
 
 ```{r ols_4, exercise=TRUE, echo=FALSE}
 read_data <- function(df)
@@ -152,6 +166,12 @@ ggplot(auto) +
 ```
 
 
+#### Questions
+- What happened to the coefficient on length after controlling for weight, headroom, and mpg in the regression?
+
+
+
+
 
 
 ## Clustering Standard Errors
@@ -163,7 +183,7 @@ People will try to scare you by challenging how you constructed your standard er
 
 As a baseline for this simulation, let's begin by simulating nonclustered data and analyze least squares estimates of that nonclustered data. This will help firm up our understanding of the problems that occur with least squares when data is clustered.
 
-First, I will create a function to generate our Monte Carlo simulation
+First, I will create a function to generate our Monte Carlo simulation.
 
 ```{r, echo=TRUE, results="hide", message=FALSE, error=FALSE, warning=FALSE}
 
@@ -255,6 +275,8 @@ run_cluster_sim <- function(n_sims = 1000, param = c(.1, .5), n = 1000,
 
 ### Case 1: No Correlation
 
+For the first simulation, the data will be generated with $\beta_1 = 0$ and no correlation between the error terms. 
+
 ```{r cluster_1, exercise = TRUE, eval = FALSE}
 
 
@@ -286,7 +308,16 @@ cli::cli_alert_success("Plot: Confidence Intervals")
 ```
 
 
+#### Questions:
+
+- What point does the least squares estimate appear to be centered on?
+- Setting the significance level at 5%, we should incorrectly reject the null that $\beta_1=0$ about 5% of the time in our simulations. About what percent of the time does the 95% confidence intervals contain the true value of $\beta_1 = 0$? 
+
+
+
 ### Case 2: Clustered Data
+
+Now let's resimulate our data with observations that are no longer independent draws in a given cluster of observations, but the true value of $\beta_1$ still is 0.
 
 ```{r cluster_2, exercise=TRUE, echo=FALSE}
 
@@ -315,8 +346,7 @@ cli::cli_alert_success("Plot: Confidence Intervals")
 1 - sum(sim_cluster_ols$param_caught)/nrow(sim_cluster_ols)
 ```
 
+#### Questions:
 
-
-
-
-
+- When the errors are clustered, does the distribution of $\hat{\beta}_1$ estimates get wider or narrower?
+- When the errors are clustered, do we incorrectly reject the null more or less frequently?
