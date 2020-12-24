@@ -1,4 +1,4 @@
-# PTeaching Resources for ***Causal Inference**: The Mixtape*
+# Teaching Resources for ***Causal Inference**: The Mixtape*
 
 In this repository is a set of R Markdown scripts that follow [Causal Inference: The Mixtape](https://www.amazon.com/dp/0300251688).
 
