@@ -1,0 +1,325 @@
+/******
+Template from: https://github.com/apreshill/learnrdelight
+*******/
+
+/*-------- Google font imports --------*/
+
+@import url('https://fonts.googleapis.com/css2?family=Zilla+Slab&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+
+
+:root{
+ --color-black: #000000;
+ --color-light-grey: #f0f0f0;
+ --color-dark-grey:  #9e9e9e;
+ --color-highlight: #ea6721;
+ --color-light-highlight: #ed7d42;
+ --color-slides: #ececec;
+}
+
+
+
+/*-------- Background color & body font --------*/
+body {
+  background-color: white;
+  font-family: 'Lato', sans-serif;
+  color: #3f3f3f;
+  font-size: 18px;
+}
+
+/*-------- Title --------*/
+.tutorialTitle {  
+    font-weight: bold;
+    margin-bottom: 0px;
+    font-size: 24px;
+}
+#doc-metadata .subtitle {
+    font-size: 16px;
+    color: #6C757D;
+    font-family: 'Roboto', serif;
+} 
+
+
+/*-------- Main Panel ---------*/
+.topics {
+    width: 75%;
+    overflow-x: auto;
+    padding-bottom: 600px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+/*------- padding sides --------*/
+.band {
+    padding-left: 2%;
+    padding-right: 2%;
+    position: relative;
+}
+
+/* Emphasis (e.g. italics) */
+em {
+    font-family: 'Lato', sans-serif;
+    color: #3f3f3f;
+}
+
+/*--------- Headers ---------*/
+
+h2 {
+  color: #ea6721;
+  font-family: 'Roboto', serif;
+}
+
+h3 {
+  color: var(--color-dark-grey);
+  font-family: 'Roboto', serif;
+}
+
+h4 {
+  color: #3f3f3f;
+  font-family: 'Roboto', serif;
+}
+
+h5 {
+    color:  #3f3f3f;
+    font-family: 'Roboto', serif;
+    font-size: 16px;
+}
+
+
+
+/*-------- Code chunk header panel ---------*/
+.panel-default > .panel-heading {
+    color: gray;
+    background-color:  gainsboro;
+    border: 1px solid lightgray;
+}
+
+/*------- Rectangle panel behind code chunk --------*/
+.panel, pre {
+    border-radius: 0;
+    background-color: white;
+    border: 0;
+}
+
+
+/*-------- Code chunk main panel --------*/
+
+.ace-tm {
+    background-color: white;
+    color: #3f3f3f;
+    border: 1px solid lightgray;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 12px;
+}
+
+/*-------- Line # cells --------*/
+
+.ace_gutter-cell {
+    padding-left: 19px;
+    padding-right: 6px;
+    background-repeat: no-repeat;
+    background-color: gainsboro;
+    color: gray;
+}
+
+/*-------- Code returns --------*/
+.tutorial-exercise-output > pre {
+    max-height: 500px;
+    overflow-y: auto;
+    background-color: white;
+    color: #3f3f3f;
+    font-family: 'Roboto Mono', monospace;
+}
+
+
+/*------- In line code aesthetic --------*/
+code {
+    font-family: 'Roboto Mono', monospace;
+    color: white;
+    background-color: var(--color-light-highlight);
+    font-size: 14px;
+}
+
+/*------- Hyperlinks --------*/
+a {
+    font-family: 'Lato', sans-serif;
+    color: #ea6721 ;
+    text-decoration: none;
+}
+
+a:hover, a:focus {
+    color: var(--color-light-highlight)  ;
+    text-decoration: underline;
+}
+
+/*------- Main menu -------*/
+.topicsList .topic {
+    font-family: 'Zilla Slab', serif;
+    color: var(--color-highlight)  ;
+    line-height: 40px;
+    font-size: 20px;
+    padding-left: 10px;
+    cursor: pointer;
+    background-color: white;
+    background-repeat: no-repeat;
+    background-size: 2px 80px;
+    background-position: left 100%;
+        background-position-y: 100%;
+    background-image: url(images/topicProgress.png);
+    border-bottom: 0;
+    border-top: 0;
+    -webkit-transition-property: background-position;
+    transition-property: background-position;
+    -webkit-transition-duration: 0.25s;
+    transition-duration: 0.25s;
+}
+
+
+/*------- Selected menu item -------*/
+.topicsList .topic.current {
+    font-family: 'Zilla Slab', serif;
+    background-color: #ea6721 ;
+    color: white;
+    border: 0;
+}
+/*--- When hovering ---*/
+.topicsList .topic:hover {
+    background-color: var(--color-highlight)  ;
+    color: white;
+}
+
+/*------- Solution / Hint buttons -------*/
+.tutorial-exercise-input .btn-tutorial-solution {
+    margin-left: 15px;
+    background-color: #ea6721;
+    color: white;
+    font-family: 'Lato', sans-serif;
+    font-size: 14px;
+    border: 0;
+    text-shadow: none;
+}
+
+/*------- Solution popover --------*/
+.popover-title {
+    margin: 0;
+    padding: 8px 14px;
+    font-size: 14px;
+    background-color: var(--color-light-highlight)  ;
+    border-bottom: 1px solid #ebebeb;
+    border-radius: 5px 5px 0 0;
+    color: white;
+    text-shadow: none;
+    font-family: 'Lato', sans-serif;
+}
+
+/*------- Buttons -------*/
+
+.btn-primary, .btn-success, .btn-info, .btn-xs, .btn-default {
+    color: white;
+    background-color: #ea6721;
+    background-image: none;
+    border: 0;
+    font-family: 'Lato', sans-serif;
+    font-size: 12px;
+    text-shadow: none;
+}
+
+/*------- Buttons when hovering -------*/
+.btn-default:hover, btn-success:hover, btn-info:hover, btn-primary:hover {
+  background-color: var(--color-light-highlight);
+  color: white;
+  font-family: 'Lato', sans-serif;
+}
+
+/*------- Code Chunk -------*/
+.panel-heading.tutorial-panel-heading {
+    background-color: var(--color-slides);
+}
+.ace_gutter {
+    background-color: var(--color-slides);
+}
+.ace_gutter-cell {
+    background-color: var(--color-slides);
+    color: var(--color-dark-grey);
+}
+.ace_content {
+  padding-left: 4px;
+  height: 100%;
+}
+
+pre.sourceCode, pre {
+    width: 100%;
+    margin-bottom: 20px;
+    border: 1px solid var(--color-dark-grey);
+    border-radius: 4px;
+    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.05);
+    box-shadow: 0 1px 1px rgba(0,0,0,0.05);
+}
+
+/*------- Code Output -------*/
+.tutorial-exercise-output > pre {
+    max-height: 500px;
+    overflow-y: auto;
+    background-color: var(--color-slides);
+    color: dimgray;
+    font-size: 13px;
+}
+
+
+
+
+/*-------- Code chunk buttons hover aesthetic -------*/
+.tutorial-exercise-input .btn-xs{
+    font-size: 12px;
+}
+
+.tutorial-exercise-input .btn-xs:hover {
+    margin-right: 0;
+    margin-top: -1px;
+    font-size: 12px;
+    margin-left: 12px;
+    padding-right: 8px;
+    font-weight: normal;
+    background-color: var(--color-light-highlight);
+    color: white;
+    border: 0;
+}
+
+/*------- Button disabled -------*/
+.btn-primary.disabled {
+    color: lightgray;
+    background-color: slategray;
+    background-image: none;
+    border: none;
+    font-family: 'Lato', sans-serif;
+}
+
+/*------- fix spacing on orange pills  ------*/
+code {
+  padding-left: 8px;
+  padding-right: 8px;
+}
+.btn {
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+/*------- Update Next Section button -------*/
+.topicActions .btn-primary:hover {
+    color: white;
+    background-color: var(--color-light-highlight);
+    background-image: none;
+    border: none;
+    font-family: 'Lato', sans-serif;
+}
+
+/*-------- Answer alert --------*/
+.alert-success {
+    background-color: #ea6721 ;
+    border: #ea6721 ;
+    color: white;
+}
+
