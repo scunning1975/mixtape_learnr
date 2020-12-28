@@ -28,7 +28,7 @@ install.packages("haven")
 install.packages("stargazer")
 ```
 
-### Setup
+### Load
 
 ```{r load, echo=FALSE, warning=FALSE, message=FALSE}
 library(learnr)

@@ -1,16 +1,97 @@
-library(tidyverse)
+---
+title: "Causal Inference: <br> *The Mixtape*"
+subtitle: "<it>Instrumental Variables</it>"
+output: 
+  learnr::tutorial:
+    css: css/style.css
+    highlight: "kate"
+runtime: shiny_prerendered
+---
+
+## Welcome
+
+This is material for the **Instrumental Variables** chapter in Scott Cunningham's book, [Causal Inference: The Mixtape.](https://mixtape.scunning.com/)
+
+### Packages needed
+
+The first thing you need to do is install a few packages to make sure everything runs:
+
+```{r, eval = FALSE}
+install.packages("tidyverse")
+install.packages("cli")
+install.packages("haven")
+install.packages("rmarkdown")
+install.packages("learnr")
+install.packages("haven")
+install.packages("estimatr")
+install.packages("stargazer")
+
+# For this chapter only
+install.packages("AER")
+install.packages("lfe")
+install.packages("SteinIV")
+```
+
+### Load 
+
+```{r load, warning=FALSE, message=FALSE}
+library(learnr)
 library(haven)
+library(tidyverse)
 library(estimatr)
+library(stargazer)
+
+# This chapter only
+library(AER)
 library(lfe)
 library(SteinIV)
 
-read_data <- function(df)
-{
-  full_path <- paste("https://raw.github.com/scunning1975/mixtape/master/", 
-                     df, sep = "")
-  df <- haven::read_dta(full_path)
-  return(df)
+# 10 minute code time limit
+options(tutorial.exercise.timelimit = 600)
+
+# read_data function
+read_data <- function(df) {
+  full_path <- paste0("https://raw.github.com/scunning1975/mixtape/master/", df)
+  return(haven::read_dta(full_path))
 }
+```
+
+## Card
+
+```{r card, exercise=TRUE, echo=FALSE}
+
+card <- read_data("card.dta")
+
+#OLS
+ols_reg <- lm(lwage ~ educ + exper + black + south + married + smsa, 
+              data = card)
+
+cli::cli_h1("OLS")
+summary(ols_reg)
+
+#2SLS
+iv_reg = ivreg(lwage ~ educ + exper + black + south + married + smsa 
+               | nearc4 + exper + black + south + married + smsa, 
+               data = card)
+
+cli::cli_h1("2SLS")
+summary(iv_reg)
+
+
+```
+
+
+#### Questions
+- How does the estimated effect of education change when instrumenting with being close to a 4-year college?
+- Why do we think the effect is larger?
+
+
+
+
+## JIVE 
+
+```{r bail, exercise=TRUE, echo=FALSE}
+
 
 judge <- read_data("judge_fe.dta")
 
@@ -53,17 +134,24 @@ max_formula <- as.formula(paste("guilt ~ jail3 + possess + robbery + DUI1st + dr
 min_ols <- lm_robust(min_formula, data = judge)
 max_ols <- lm_robust(max_formula, data = judge)
 
+cli::cli_h1("OLS")
+texreg::knitreg(list(min_ols, max_ols))
+
+
 #--- Instrumental Variables Estimations
 #-- 2sls main results
 #- Min and Max Control formulas
 min_formula <- as.formula(paste("guilt ~ ", control2, " | 0 | (jail3 ~ 0 +", judge_pre, ")"))
 max_formula <- as.formula(paste("guilt ~", demo, "+ possess +", prior, "+ robbery +", 
                                 off, "+ DUI1st +", control2, "+ drugSell + aggAss | 0 | (jail3 ~ 0 +", judge_pre, ")"))
+
 #2sls for min and max
+
 min_iv <- felm(min_formula, data = judge)
-summary(min_iv)
 max_iv <- felm(max_formula, data = judge)
-summary(max_iv)
+
+cli::cli_h1("IV")
+texreg::knitreg(list(min_iv, max_iv))
 
 
 
@@ -83,6 +171,7 @@ Z_min <- judge %>%
   select(starts_with("judge_pre"), day, day2, t1, t2, t3, t4, t5, bailDate) %>%
   model.matrix(data = .,~.)
 
+cli::cli_h1("JIVE")
 jive.est(y = y, X = X_min, Z = Z_min)
 
 #- maximum controls
@@ -114,3 +203,8 @@ Z_max <- judge %>%
   model.matrix(data = .,~.)
 
 jive.est(y = y, X = X_max, Z = Z_max)
+
+```
+
+
+

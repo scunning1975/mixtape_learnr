@@ -26,7 +26,7 @@ install.packages("estimatr")
 install.packages("haven")
 ```
 
-### Setup
+### Load
 
 ```{r load, echo=FALSE, warning=FALSE, message=FALSE}
 library(learnr)

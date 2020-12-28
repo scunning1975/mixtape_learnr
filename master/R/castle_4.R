@@ -1,7 +1,5 @@
 
-# This version includes
-# an interval that traces the confidence intervals
-# of your coefficients
+# This version includes an interval that traces the confidence intervals of your coefficients
 leadslags_plot %>%
   ggplot(aes(x = label, y = mean,
              ymin = mean-1.96*sd, 

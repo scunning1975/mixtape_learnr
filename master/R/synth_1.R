@@ -9,7 +9,7 @@ read_data <- function(df)
 {
   full_path <- paste("https://raw.github.com/scunning1975/mixtape/master/", 
                      df, sep = "")
-  df <- read_dta(full_path)
+  df <- haven::read_dta(full_path)
   return(df)
 }
 
