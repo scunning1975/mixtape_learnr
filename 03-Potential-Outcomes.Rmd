@@ -20,7 +20,7 @@ options(tutorial.exercise.timelimit = 600)
 
 ## Welcome
 
-This is material for the **Probability and Regression** chapter in Scott Cunningham's book, [Causal Inference: The Mixtape.](https://mixtape.scunning.com/)
+This is material for the **Potential Outcomes** chapter in Scott Cunningham's book, [Causal Inference: The Mixtape.](https://mixtape.scunning.com/)
 
 ### Packages needed
 
@@ -311,7 +311,7 @@ permutation <- tibble(
     c(permuteHIV(hiv, random = FALSE), map(seq(iterations-1), ~permuteHIV(hiv, random = TRUE)))
   )
 )
-
+ 
 #calculating the p-value
 
 permutation <- permutation %>% 

@@ -6,21 +6,21 @@ In this repository is a set of R Markdown scripts that follow [Causal Inference:
 
 First things first, you should fork this repository so you can make changes to the course and customize the files to your liking. To do this, you're in the right place. Click the fork button in the top right corner of this page.
 
-![Fork this Repository](using_these_files/fork.jpeg "Forking Repository")
+![Fork this Repository](readme_files/fork.jpeg "Forking Repository")
 
 There are three options for how to have students use these materials:
 
 ### 1. Run files using Learnr:
 
-![Open file and click 'Run Document'](using_these_files/rstudio_learnr_1.jpeg "Open .Rmd File and Click 'Run Document'")
+![Open file and click 'Run Document'](readme_files/rstudio_learnr_1.jpeg "Open .Rmd File and Click 'Run Document'")
 
-![Run code](using_these_files/rstudio_learnr_2.jpeg "Run Code")
+![Run code](readme_files/rstudio_learnr_2.jpeg "Run Code")
 
 ### 2. Run files in RStudio:
 
 You can also have students run R Markdown scripts directly from RStudio without using 'Run Document'. RStudio has great support for running code chunks and students would just have to hit the green play button to run each code chunk:
 
-![Run code in RStudio](using_these_files/rstudio_1.jpeg "Run Code in RStudio")
+![Run code in RStudio](readme_files/rstudio_1.jpeg "Run Code in RStudio")
 
 ### 3. Run files in the web browser:
 
@@ -34,7 +34,7 @@ For each .Rmd file you intend to use, you will have to publish a separate 'proje
 
 -   Select the .Rmd file you wish to publish and the style.css file. Give this an appropriate title and click Publish.
 
-![Publish to shinyapps.io](using_these_files/publish.png "Publish to shinyapps.io")
+![Publish to shinyapps.io](readme_files/publish.png "Publish to shinyapps.io")
 
 -   This will take a few minutes and may require you to download some R packages, but afterwards it should open up the website in your web-browser. Copy this url.
 
