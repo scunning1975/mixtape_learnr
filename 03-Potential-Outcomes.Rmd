@@ -130,6 +130,9 @@ combo <- as_tibble(t(combn(correct$cup, 4))) %>%
 
 sum(combo$correct == 1)
 p_value <- sum(combo$correct == 1)/nrow(combo)
+
+p_value
+
 ```
 
 
@@ -198,6 +201,11 @@ p_value <- inner_join(te1, te0, by = "permutation") %>%
 p_value
 
 ```
+
+
+#### Questions
+
+- Can we reject the null in the placebo distribution?
 
 
 
@@ -319,7 +327,9 @@ p_value
 ```
 
 
+#### Questions 
 
+- Can we reject the null of no effect from our p-value?
 
 
 
