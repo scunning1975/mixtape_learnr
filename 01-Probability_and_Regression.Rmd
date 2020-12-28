@@ -8,16 +8,6 @@ output:
 runtime: shiny_prerendered
 ---
 
-```{r setup, include=FALSE}
-library(learnr)
-library(haven)
-library(tidyverse)
-knitr::opts_chunk$set(echo = TRUE)
-
-# 10 minute code time limit
-options(tutorial.exercise.timelimit = 600)
-```
-
 ## Welcome
 
 This is material for the **Probability and Regression** chapter in Scott Cunningham's book, [Causal Inference: The Mixtape.](https://mixtape.scunning.com/)
@@ -32,8 +22,29 @@ install.packages("cli")
 install.packages("haven")
 install.packages("rmarkdown")
 install.packages("learnr")
+install.packages("estimatr")
 install.packages("haven")
 ```
+
+### Setup
+
+```{r load, echo=FALSE, warning=FALSE, message=FALSE}
+library(learnr)
+library(haven)
+library(tidyverse)
+library(estimatr)
+library(stargazer)
+
+# 10 minute code time limit
+options(tutorial.exercise.timelimit = 600)
+
+# read_data function
+read_data <- function(df) {
+  full_path <- paste0("https://raw.github.com/scunning1975/mixtape/master/", df)
+  return(haven::read_dta(full_path))
+}
+```
+
 
 ## OLS
 
@@ -132,14 +143,6 @@ as_tibble(t(sapply(lm, coef))) %>%
 -   On average, do we think the estimate is close to the true value of $\beta_1 = 2$?
 
 ```{r ols_4, exercise=TRUE, echo=FALSE}
-read_data <- function(df)
-{
-  full_path <- paste("https://raw.github.com/scunning1975/mixtape/master/", 
-                     df, sep = "")
-  df <- haven::read_dta(full_path)
-  return(df)
-}
-
 auto <- read_data("auto.dta") %>% 
   mutate(length = length - mean(length))
 

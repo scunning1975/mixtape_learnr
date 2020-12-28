@@ -1,6 +1,6 @@
 ---
 title: "Causal Inference: <br> *The Mixtape*"
-subtitle: "<it>Probability and Regression Review</it>"
+subtitle: "<it>Potential Outcomes</it>"
 output: 
   learnr::tutorial:
     css: css/style.css
@@ -8,19 +8,10 @@ output:
 runtime: shiny_prerendered
 ---
 
-```{r setup, include=FALSE}
-library(learnr)
-library(haven)
-library(tidyverse)
-knitr::opts_chunk$set(echo = TRUE)
-
-# 10 minute code time limit
-options(tutorial.exercise.timelimit = 600)
-```
-
 ## Welcome
 
 This is material for the **Potential Outcomes** chapter in Scott Cunningham's book, [Causal Inference: The Mixtape.](https://mixtape.scunning.com/)
+
 
 ### Packages needed
 
@@ -33,28 +24,40 @@ install.packages("haven")
 install.packages("rmarkdown")
 install.packages("learnr")
 install.packages("haven")
-install.packages("texreg")
+
+install.packages("stargazer")
 ```
+
+### Setup
+
+```{r load, echo=FALSE, warning=FALSE, message=FALSE}
+library(learnr)
+library(haven)
+library(tidyverse)
+library(estimatr)
+library(stargazer)
+library(utils)
+
+# 10 minute code time limit
+options(tutorial.exercise.timelimit = 600)
+
+# read_data function
+read_data <- function(df) {
+  full_path <- paste0("https://raw.github.com/scunning1975/mixtape/master/", df)
+  return(haven::read_dta(full_path))
+}
+```
+
+
 
 ## Yule
 
 ```{r yule, exercise=TRUE, echo=FALSE}
-library(tidyverse)
-library(haven)
-
-read_data <- function(df)
-{
-  full_path <- paste("https://raw.github.com/scunning1975/mixtape/master/", 
-                     df, sep = "")
-  df <- read_dta(full_path)
-  return(df)
-}
 
 yule <- read_data("yule.dta") %>% 
   lm(paup ~ outrelief + old + pop, .)
 
-texreg::screenreg(yule)
-# summary(yule)
+stargazer(yule, type="text")
 
 ```
 
@@ -68,8 +71,6 @@ texreg::screenreg(yule)
 ## Independence Assumption
 
 ```{r independence, exercise=TRUE, echo=FALSE}
-
-library(tidyverse)
 
 gap <- function() {
   sdo <-  tibble(
@@ -105,9 +106,6 @@ mean(sim)
 ## Fisher Randomization
 
 ```{r randomization_1, exercise=TRUE, echo=FALSE}
-library(tidyverse)
-library(utils)
-
 correct <- tibble(
   cup   = c(1:8),
   guess = c(1:4,rep(0,4))
@@ -158,7 +156,7 @@ read_data <- function(df)
 {
   full_path <- paste("https://raw.github.com/scunning1975/mixtape/master/", 
                      df, sep = "")
-  df <- read_dta(full_path)
+  df <- haven::read_dta(full_path)
   return(df)
 }
 
@@ -213,7 +211,6 @@ p_value
 
 
 ```{r ks, exercise=TRUE, echo=FALSE}
-library(tidyverse)
 library(stats)
 
 tb <- tibble(
@@ -264,7 +261,7 @@ read_data <- function(df)
 {
   full_path <- paste("https://raw.github.com/scunning1975/mixtape/master/", 
                      df, sep = "")
-  df <- read_dta(full_path)
+  df <- haven::read_dta(full_path)
   return(df)
 }
 
