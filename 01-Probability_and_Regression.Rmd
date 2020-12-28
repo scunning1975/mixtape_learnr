@@ -6,7 +6,6 @@ output:
     css: css/style.css
     highlight: "kate"
 runtime: shiny_prerendered
-
 ---
 
 ```{r setup, include=FALSE}
@@ -19,9 +18,11 @@ knitr::opts_chunk$set(echo = TRUE)
 options(tutorial.exercise.timelimit = 600)
 ```
 
-
-
 ## Welcome
+
+This is material for the **Probability and Regression** chapter in Scott Cunningham's book, [Causal Inference: The Mixtape.](https://mixtape.scunning.com/)
+
+### Packages needed
 
 The first thing you need to do is install a few packages to make sure everything runs:
 
@@ -31,10 +32,10 @@ install.packages("cli")
 install.packages("haven")
 install.packages("rmarkdown")
 install.packages("learnr")
+install.packages("haven")
 ```
 
-
-## OLS 
+## OLS
 
 ```{r ols_1, exercise=TRUE, echo=FALSE}
 
@@ -80,10 +81,9 @@ ggplot(data= tb, aes(x=x, y=y)) +
 ```
 
 #### Questions:
-- What is the predicted value of $y$ when $x = 0$?
-- How much do we estimate $y$ increases by when $x$ increases by one unit?
 
-
+-   What is the predicted value of $y$ when $x = 0$?
+-   How much do we estimate $y$ increases by when $x$ increases by one unit?
 
 ```{r ols_2, exercise=TRUE, echo=FALSE}
 tb <- tibble(
@@ -102,9 +102,8 @@ colSums(tb)
 ```
 
 #### Questions
-- What is the average of the residuals $\hat{u}$ from our regression?
 
-
+-   What is the average of the residuals $\hat{u}$ from our regression?
 
 ```{r ols_3, exercise=TRUE, echo=FALSE}
 cli::cli_alert_success("Running 1000 Simulations of OLS")
@@ -129,8 +128,8 @@ as_tibble(t(sapply(lm, coef))) %>%
 ```
 
 #### Questions
-- On average, do we think the estimate is close to the true value of $\beta_1 = 2$?
 
+-   On average, do we think the estimate is close to the true value of $\beta_1 = 2$?
 
 ```{r ols_4, exercise=TRUE, echo=FALSE}
 read_data <- function(df)
@@ -165,17 +164,11 @@ ggplot(auto) +
   geom_smooth(aes(x = length, y = price), data = y_single, color="red")
 ```
 
-
 #### Questions
-- What happened to the coefficient on length after controlling for weight, headroom, and mpg in the regression?
 
-
-
-
-
+-   What happened to the coefficient on length after controlling for weight, headroom, and mpg in the regression?
 
 ## Clustering Standard Errors
-
 
 ### Cluster robust standard errors
 
@@ -272,10 +265,9 @@ run_cluster_sim <- function(n_sims = 1000, param = c(.1, .5), n = 1000,
 
 ```
 
-
 ### Case 1: No Correlation
 
-For the first simulation, the data will be generated with $\beta_1 = 0$ and no correlation between the error terms. 
+For the first simulation, the data will be generated with $\beta_1 = 0$ and no correlation between the error terms.
 
 ```{r cluster_1, exercise = TRUE, eval = FALSE}
 
@@ -307,13 +299,10 @@ cli::cli_alert_success("Plot: Confidence Intervals")
 
 ```
 
-
 #### Questions:
 
-- What point does the least squares estimate appear to be centered on?
-- Setting the significance level at 5%, we should incorrectly reject the null that $\beta_1=0$ about 5% of the time in our simulations. About what percent of the time does the 95% confidence intervals contain the true value of $\beta_1 = 0$? 
-
-
+-   What point does the least squares estimate appear to be centered on?
+-   Setting the significance level at 5%, we should incorrectly reject the null that $\beta_1=0$ about 5% of the time in our simulations. About what percent of the time does the 95% confidence intervals contain the true value of $\beta_1 = 0$?
 
 ### Case 2: Clustered Data
 
@@ -348,5 +337,5 @@ cli::cli_alert_success("Plot: Confidence Intervals")
 
 #### Questions:
 
-- When the errors are clustered, does the distribution of $\hat{\beta}_1$ estimates get wider or narrower?
-- When the errors are clustered, do we incorrectly reject the null more or less frequently?
+-   When the errors are clustered, does the distribution of $\hat{\beta}_1$ estimates get wider or narrower?
+-   When the errors are clustered, do we incorrectly reject the null more or less frequently?

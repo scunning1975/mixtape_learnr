@@ -28,7 +28,7 @@ The last option allows you to launch the learnr html files directly into a url t
 
 Setting up Online Site:
 
-For each .Rmd file you intend to use, you will have to publish a separate 'project' for this. After you set up you account and forking the repository, you will open your repository in RStudio ([more info on publishing here](<https://rstudio.github.io/learnr/publishing.html>)).
+For each .Rmd file you intend to use, you will have to publish a separate 'project' for this. After you set up you account and forking the repository, you will open your repository in RStudio ([more info on publishing here](https://rstudio.github.io/learnr/publishing.html)).
 
 -   Open up the .Rmd file you wish to publish and click File -\> Publish.
 
