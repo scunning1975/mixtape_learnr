@@ -147,8 +147,9 @@ cli::cli_text("The {.emph weigthted average treatment effect} estimate is {round
 ```
 
 #### Questions
-- Using the simple difference in outcomes, how much does the probability of survival increase for first-class passengers?
-- After conditioning on gender and age, what happens to the differnce in probability of survival between first-class and non-first-class passengers?
+- Using the simple difference in outcomes, how much does the probability of survival increase for first-class passengers relative to some control group?
+- Explain in your own words what stratifying on gender and age did for this difference in outcomes between treatment and control?
+- After stratifying on gender and age, what happens to the difference in probability of survival between first-class and non-first-class passengers?
 
 
 
@@ -230,6 +231,7 @@ cli::cli_text("The {.emph experimental ATE} estimate is {round(ate,2)}")
 
 #### Questions
 - How do you interpret the above estimated ATE?
+- Say you were interested in the ATT.  Can you report the ATT from a randomized experiment?  If so, what is it? If not, why not?
 
 
 
@@ -383,7 +385,9 @@ cli::cli_text("Treatment Effect {.emph (normalized, trimmed data)}: {round(te_4,
 
 #### Questions
 
+- Explain the overlap condition in the context of these data.  How did we ensure that overlap held in the data? 
 - When we are using non-trimmed data, why is the treatment effect negative? (*hint:* it has to do with extreme probability scores)
+- What does this imply about the challenges of using non-experimental data when estimating causal effects, and why is conditioning on a trimmed propensity score important?
 
 
 ## Nearest-Neighbor Matching
@@ -432,6 +436,10 @@ m_data <- match.data(m_out)
 
 
 ```
+
+#### QUESTIONS
+- Compare our results from nearest-neighbor matching to what we found using the experimental data, the simple difference in outcomes using non-experimental controls, and propensity score weighting using non-experimental controls.
+- DIFFICULT: Write a program that performs bootstrapping to get an estimate of the variance of the estimator. (HINT: Write a loop)
 
 
 

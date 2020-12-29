@@ -95,6 +95,7 @@ ggplot(data= tb, aes(x=x, y=y)) +
 
 -   What is the predicted value of $y$ when $x = 0$?
 -   How much do we estimate $y$ increases by when $x$ increases by one unit?
+-   Assume we y was the natural log of some variable, and x was the natural log of some variable.  How do we interpret the coefficient on $x$ if it is a log-log regression?
 
 ```{r ols_2, exercise=TRUE, echo=FALSE}
 tb <- tibble(
@@ -140,6 +141,7 @@ as_tibble(t(sapply(lm, coef))) %>%
 
 #### Questions
 
+-   Explain the concept of unbiasedness in the context of this simulation?  
 -   On average, do we think the estimate is close to the true value of $\beta_1 = 2$?
 
 ```{r ols_4, exercise=TRUE, echo=FALSE}

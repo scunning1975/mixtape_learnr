@@ -100,3 +100,11 @@ plot_placebos(placebos)
 mspe.plot(placebos, discard.extreme = TRUE, mspe.limit = 1, plot.hist = TRUE)
 
 ```
+
+#### Questions
+- In your own words, what do you think the identifying assumptions are for synthetic control to be consistent? 
+- What role, if any, does parallel trends play in synthetic control?
+- Who is the unit with the largest ratio of post to pre RMSPE?  
+- Compare the unit with the largest post to pre RMSPE estimated effect to the Texas effect.  How do the weights compare?  How do the size of the effects compare?  How do the ``signs`` of the effects compare?
+- Can you improve on my fit by experimenting with different combinations? Do so and report your analysis.
+- Report results from a variety of different specifications.  How robust does the prison effect appear to be?

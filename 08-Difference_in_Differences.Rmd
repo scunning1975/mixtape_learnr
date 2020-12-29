@@ -89,6 +89,8 @@ abortion_plot %>%
 ```
 
 #### Questions
+- Describe in your own words the testable predictions from the roll out of repeal versus Roe in the population?  In other words, describe the behavior of the DD coefficients under this regression.  
+- Do we find evidence consistent with this in our DD analysis?  List all the evidence for and against the hypothesis in this analysis. 
 - Does it appear that there was an effect in the period where Roe has not fully caught up?
 
 
@@ -131,6 +133,12 @@ abortion_plot %>%
     subtitle= "Black female 15-19 year-olds vs. Black female 25-29 year-olds")
 
 ```
+
+
+#### Questions
+- Why did we implement a triple difference?  What problems does this solve and to what degree do you feel it is a necessary check?
+- Describe the evidence for and against the abortion selection hypothesis when using triple difference?  How is it consistent with our DD and how is it not?
+
 
 ```{r abortion_dd2, exercise=TRUE, echo=FALSE}
 
@@ -176,7 +184,11 @@ regddd
 ```
 
 
-
+#### Questions
+- Why did we suggest that conducting this additional analysis not conducted in the original study?
+- How convinced are you now of the abortion selection hypothesis?  Why/why not?
+- Could you have concluded this had you not exploited all of the testable predictions of the original table showing roll out across cohort and time?  
+- How important was our ``model`` to forming testable predictions and falsifications? 
 
 ## Cheng and Hoekstra (2013)
 
@@ -248,6 +260,13 @@ summary(dd_reg)
 
 ```
 
+#### QUESTIONS
+
+- What effect does this analysis say reforming castle doctrine laws has on homicides?
+- What are the key parts of these legislative reforms that you think may be causing this result?
+- Explain what SUTVA requires in order for these estimates to be causal?
+- Assume there are spillovers to neighboring states created by castle doctrine reforms.  Does that imply that Cheng and Hoekstra's result is too large or too small?  Why/why not?
+
 ```{r castle_2, exercise=TRUE, echo=FALSE}
 castle <- castle %>%
   mutate(
@@ -284,6 +303,11 @@ event_study_reg <- felm(event_study_formula, weights = castle$popwt, data = cast
 summary(event_study_reg)
 
 ```
+
+#### QUESTIONS
+- Put into your own words why we estimated the pre-treatment leads?
+- Put into your own words what we expected to find?
+- How convinced are you by this analysis that parallel trends was likely to hold in Cheng and Hoekstra's data? 
 
 ```{r castle_3, exercise=TRUE, echo=FALSE}
 

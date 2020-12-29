@@ -134,3 +134,9 @@ summary(ols_demean)
 
 ```
 
+#### QUESTIONS
+- Interpret the effect of natural log of session length on the natural log of hourly wage.  Describe the economic theory that might explain this relationship?  (HINT: Consider the role that supplier fixed versus variable costs may have on the hourly wage.)
+- Becker described discrimination in terms of ``taste based``.  This meant that social interactions with people of the other race were factors into marginal cost.  Given that these persist, what does this imply about the effect that competition is having on discrimination?
+- Hamermesh and Biddle suggest that beauty is valued on the market.  Describe some reasons why there is no effect on client beauty once we use the within estimators?
+- What other interesting results did you find in this analysis?  Which ones surprised you and which ones were intuitive and why?
+
