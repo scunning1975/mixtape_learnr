@@ -64,8 +64,11 @@ stargazer(yule, type="text")
 
 #### Questions
 
-- How do you interpret the coefficient on `outrelief`?
+- How do you interpret the coefficient on `outrelief` given it's a percentage change regressed onto a percentage?
+- Draw a DAG representing what must be true in order for Yule's estimate of `outrelief` on pauper growth rates to be causal?  
 - Yule concluded that public assistance (`outrelief`) increased pauper growth rates. How convinced are you that all backdoor paths between pauperism and out-relief are blocked once you control for two covariates in a cross-sectional database for all of England? Could there be unobserved determinants of both poverty and public assistance?
+- If public assistance causes pauper growth rates, but pauper growth rates also causes public assistance, then why won't Yule's regression capture a causal effect of `outrelief` on pauper growth rates?  Explain the concept of reverse causality with Yule's data.
+
 
 
 ## Independence Assumption
@@ -97,7 +100,9 @@ mean(sim)
 ```
 
 #### Questions
-- How realistic is independence in observational data? Economics---maybe more than any other science---tells us that independence is unlikely to hold observationally. Why is that?
+- The requirement that treatment be independent of potential outcomes states that a choice made by a person must be independent of what they expect to gain or lose from the choice.  Give an example where this is likely true?  What does independence imply about human decision-making?
+- All of the behavioral sciences sciences, including economics, suggest that independence is unlikely to hold outside of an experiment. What is so special about an experiment where independence will hold?  What is so special about behavior outside an experient where it is unlikely to hold?
+- What implication does the decision rule of utility maximization from economics have for our ability to appeal to treatment being distributed independent of potential outcomes?
 
 
 
@@ -326,7 +331,8 @@ p_value
 
 #### Questions 
 
-- Can we reject the null of no effect from our p-value?
+- How does the randomization inference test of no treatment effect differ from a null of no average treatment effect?
+- How likely is it that Thornton's results were a result of random chance? 
 
 
 
