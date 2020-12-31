@@ -26,7 +26,7 @@ install.packages("haven")
 install.packages("stargazer")
 
 # For this chapter only
-install.packages("Matchit")
+install.packages("MatchIt")
 install.packages("cem")
 install.packages("estimatr")
 ```
@@ -38,6 +38,11 @@ library(learnr)
 library(haven)
 library(tidyverse)
 library(stargazer)
+
+# For this chapter only
+library(MatchIt)
+library(cem)
+library(estimatr)
 
 # 10 minute code time limit
 options(tutorial.exercise.timelimit = 600)
@@ -239,6 +244,7 @@ Now, lets turn to a non-experimental control group. We first have to load the da
 
 ```{r}
 
+# Prepare data for logit 
 nsw_dw_cpscontrol <- read_data("cps_mixtape.dta") %>% 
   bind_rows(nsw_dw) %>% 
   mutate(
@@ -392,14 +398,6 @@ cli::cli_text("Treatment Effect {.emph (normalized, trimmed data)}: {round(te_4,
 
 ## Nearest-Neighbor Matching
 
-```{r, echo=FALSE, message=FALSE, warning=FALSE}
-library(MatchIt)
-library(cem)
-library(estimatr)
-```
-
-
-
 
 ```{r nn, exercise=TRUE, echo=FALSE}}
 m_out <- matchit(treat ~ age + agesq + agecube + educ +
@@ -437,7 +435,7 @@ m_data <- match.data(m_out)
 
 ```
 
-#### QUESTIONS
+#### Questions
 - Compare our results from nearest-neighbor matching to what we found using the experimental data, the simple difference in outcomes using non-experimental controls, and propensity score weighting using non-experimental controls.
 - DIFFICULT: Write a program that performs bootstrapping to get an estimate of the variance of the estimator. (HINT: Write a loop)
 

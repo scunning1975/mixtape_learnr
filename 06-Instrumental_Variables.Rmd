@@ -150,8 +150,8 @@ max_formula <- as.formula(paste("guilt ~", demo, "+ possess +", prior, "+ robber
 
 #2sls for min and max
 
-min_iv <- felm(min_formula, data = judge)
-max_iv <- felm(max_formula, data = judge)
+min_iv <- lfe::felm(min_formula, data = judge)
+max_iv <- lfe::felm(max_formula, data = judge)
 
 cli::cli_h1("IV")
 texreg::knitreg(list(min_iv, max_iv))

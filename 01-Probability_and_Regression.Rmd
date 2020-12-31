@@ -24,6 +24,13 @@ install.packages("rmarkdown")
 install.packages("learnr")
 install.packages("estimatr")
 install.packages("haven")
+
+# This Chapter Only
+install.packages("arm")
+install.packages("mvtnorm")
+install.packages("lme4")
+install.packages("multiwayvcov")
+install.packages("clusterSEs")
 ```
 
 ### Load
@@ -34,6 +41,13 @@ library(haven)
 library(tidyverse)
 library(estimatr)
 library(stargazer)
+
+# This Chapter Only
+library(arm)
+library(mvtnorm)
+library(lme4)
+library(multiwayvcov)
+library(clusterSEs)
 
 # 10 minute code time limit
 options(tutorial.exercise.timelimit = 600)
@@ -183,24 +197,12 @@ As a baseline for this simulation, let's begin by simulating nonclustered data a
 
 First, I will create a function to generate our Monte Carlo simulation.
 
-```{r, echo=TRUE, results="hide", message=FALSE, error=FALSE, warning=FALSE}
 
+```{r}
 #- Analysis of Clustered Data
 #- Courtesy of Dr. Yuki Yanai, 
 #- http://yukiyanai.github.io/teaching/rm1/contents/R/clustered-data-analysis.html
 
-library('arm', quietly=TRUE)
-library('mvtnorm', quietly=TRUE)
-library('lme4', quietly=TRUE)
-library('multiwayvcov', quietly=TRUE)
-library('clusterSEs', quietly=TRUE)
-library('ggplot2', quietly=TRUE)
-library('dplyr', quietly=TRUE)
-library('haven', quietly=TRUE)
-
-```
-
-```{r}
 cli::cli_alert_success("Simulation Functions Created")
 
 gen_cluster <- function(param = c(.1, .5), n = 1000, n_cluster = 50, rho = .5) {
@@ -276,7 +278,6 @@ For the first simulation, the data will be generated with $\beta_1 = 0$ and no c
 
 ```{r cluster_1, exercise = TRUE, eval = FALSE}
 
-
 # Distribution of the estimator and confidence intervals
 cli::cli_alert_success("Running Simulation")
 sim_params <- c(.4, 0)   # beta1 = 0: no effect of x on y
@@ -316,9 +317,7 @@ Now let's resimulate our data with observations that are no longer independent d
 ```{r cluster_2, exercise=TRUE, echo=FALSE}
 
 sim_params <- c(.4, 0)   # beta1 = 0: no effect of x on y
-sim_cluster_ols <- run_cluster_sim(n_sims = 10000, param = sim_params)
-hist_cluster_ols <- hist_nocluster %+% sim_cluster_ols
-
+sim_cluster_ols <- run_cluster_sim(n_sims = 1000, param = sim_params)
 
 cli::cli_alert_success("Plot: Distribution of Betas")
 (ggplot(sim_cluster_ols, aes(b1)) +

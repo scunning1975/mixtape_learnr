@@ -23,8 +23,10 @@ install.packages("haven")
 install.packages("rmarkdown")
 install.packages("learnr")
 install.packages("haven")
-
 install.packages("stargazer")
+
+# This Chapter Only
+install.packages("plm")
 ```
 
 ### Load
@@ -34,6 +36,9 @@ library(learnr)
 library(haven)
 library(tidyverse)
 library(stargazer)
+
+# This Chapter Only
+library(plm)
 
 # 10 minute code time limit
 options(tutorial.exercise.timelimit = 600)
@@ -95,6 +100,7 @@ balanced_sasp <- balanced_sasp %>%
   )
 
 #-- POLS
+cli::cli_h1("Pooled OLS") 
 ols <- lm_robust(lnw ~ age + asq + bmi + hispanic + black + other + asian + schooling + cohab + married + divorced + separated + 
            age_cl + unsafe + llength + reg + asq_cl + appearance_cl + provider_second + asian_cl + black_cl + hispanic_cl + 
            othrace_cl + hot + massage_cl, data = balanced_sasp)
@@ -102,6 +108,7 @@ summary(ols)
 
 
 #-- FE
+cli::cli_h1("Fixed Effects") 
 formula <- as.formula("lnw ~ age + asq + bmi + hispanic + black + other + asian + schooling + 
                       cohab + married + divorced + separated + 
                       age_cl + unsafe + llength + reg + asq_cl + appearance_cl + 
@@ -116,6 +123,7 @@ model_fe <- lm_robust(formula = formula,
 summary(model_fe)
 
 #-- Demean OLS
+cli::cli_h1("Demeaned OLS") 
 dm_formula <- as.formula("demean_lnw ~ demean_age + demean_asq + demean_bmi + 
                 demean_hispanic + demean_black + demean_other +
                 demean_asian + demean_schooling + demean_cohab + 

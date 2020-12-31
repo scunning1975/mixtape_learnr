@@ -43,7 +43,6 @@ library(stargazer)
 library(texreg)
 
 # This Chapter only
-library(stats)
 library(rdrobust)
 library(rddensity)
 library(rdd)
@@ -366,8 +365,8 @@ rdplotdensity(density, lmb_data$demvoteshare)
 
 ```
 
-#### QUESTIONS
-- Can you think of another example where you might use the close election design to estimator some average treatment effect?
+#### Questions
+- Can you think of another example where you might use the close election design to estimate some average treatment effect?
 - To what degree does this study help us understand the importance of incumbency in a Presidential election?  Why/why not?
 
 

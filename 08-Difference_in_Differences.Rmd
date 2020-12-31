@@ -254,7 +254,7 @@ dd_formula <- as.formula(
 )
 
 #Fixed effect regression using post as treatment variable 
-dd_reg <- felm(dd_formula, weights = castle$popwt, data = castle)
+dd_reg <- lfe::felm(dd_formula, weights = castle$popwt, data = castle)
 summary(dd_reg)
 
 
@@ -280,7 +280,6 @@ castle <- castle %>%
     lead7 = case_when(time_til == -7 ~ 1, TRUE ~ 0),
     lead8 = case_when(time_til == -8 ~ 1, TRUE ~ 0),
     lead9 = case_when(time_til == -9 ~ 1, TRUE ~ 0),
-    
     lag0 = case_when(time_til == 0 ~ 1, TRUE ~ 0),
     lag1 = case_when(time_til == 1 ~ 1, TRUE ~ 0),
     lag2 = case_when(time_til == 2 ~ 1, TRUE ~ 0),
@@ -299,7 +298,7 @@ event_study_formula <- as.formula(
   ),
 )
 
-event_study_reg <- felm(event_study_formula, weights = castle$popwt, data = castle)
+event_study_reg <- lfe::felm(event_study_formula, weights = castle$popwt, data = castle)
 summary(event_study_reg)
 
 ```
@@ -342,7 +341,7 @@ event_study_formula <- as.formula(
   ),
 )
 
-event_study_reg <- felm(event_study_formula, weights = castle$popwt, data = castle)
+event_study_reg <- lfe::felm(event_study_formula, weights = castle$popwt, data = castle)
 
 # order of the coefficients for the plot
 plot_order <- c("lead9", "lead8", "lead7", 
