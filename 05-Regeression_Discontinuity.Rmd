@@ -34,8 +34,7 @@ install.packages("rddensity")
 
 ### Load
 
-```{r load, echo=FALSE, warning=FALSE, message=FALSE}
-library(learnr)
+```{r load, warning=FALSE, message=FALSE}
 library(haven)
 library(tidyverse)
 library(estimatr)
