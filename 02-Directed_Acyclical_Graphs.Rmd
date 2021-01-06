@@ -69,7 +69,11 @@ stargazer(lm_1,lm_2,lm_3,
 
 
 ```
-
+#### QUESTIONS
+- What is the true direct effect of discrimination on wages?  
+- Explain the channels by which discrimination impacts wages.  
+- What makes occupation a collider?
+- What controls are necessary to eliminate this collider bias?
 
 
 
@@ -107,6 +111,9 @@ star_is_born %>%
 
 ```
 
+#### QUESTIONS
+- What is the correlation between talent and beauty among stars?  Non-stars?
+- But what is the correlation between talent and beauty in the population?
 
 
 
