@@ -1,6 +1,6 @@
 ---
 title: "Causal Inference: <br> *The Mixtape*"
-subtitle: "<it>Regression Discontinuity</it>"
+subtitle: "<it>Difference-in-Differences</it>"
 output: 
   learnr::tutorial:
     css: css/style.css
@@ -10,7 +10,7 @@ runtime: shiny_prerendered
 
 ## Welcome
 
-This is material for the **Regression Discontinuity** chapter in Scott Cunningham's book, [Causal Inference: The Mixtape.](https://mixtape.scunning.com/)
+This is material for the **Difference-in-Differences** chapter in Scott Cunningham's book, [Causal Inference: The Mixtape.](https://mixtape.scunning.com/)
 
 ### Packages needed
 
@@ -25,26 +25,26 @@ install.packages("learnr")
 install.packages("haven")
 install.packages("stargazer")
 
-# This Chapter only
-install.packages("texreg")
-install.packages("rdrobust")
+# This chapter only
+install.packages("estimatr")
 install.packages("rdd")
+install.packages("rdrobust")
 install.packages("rddensity")
 ```
 
 ### Load
 
 ```{r load, warning=FALSE, message=FALSE}
+library(learnr)
 library(haven)
 library(tidyverse)
-library(estimatr)
 library(stargazer)
-library(texreg)
+library(estimatr)
 
-# This Chapter only
+# This chapter only
+library(rdd)
 library(rdrobust)
 library(rddensity)
-library(rdd)
 
 # 10 minute code time limit
 options(tutorial.exercise.timelimit = 600)
@@ -79,7 +79,7 @@ dat <- dat %>%
     y1 = 25 + 0 * D + 1.5 * x + rnorm(n(), 0, 20)
   )
 
-cli::cli_h1("Counterfactual Potential Outcomes")
+cli::cli_text("Counterfactual Potential Outcomes")
 ggplot(aes(x, y1, colour = factor(D)), data = dat) +
   geom_point(alpha = 0.5) +
   geom_vline(xintercept = 50, colour = "grey", linetype = 2)+
@@ -93,7 +93,7 @@ dat <- dat %>%
     y2 = 25 + 40 * D + 1.5 * x + rnorm(n(), 0, 20)
   )
 
-cli::cli_h1("Potential Outcomes after Treatment")
+cli::cli_text("Potential Outcomes after Treatment")
 ggplot(aes(x, y2, colour = factor(D)), data = dat) +
   geom_point(alpha = 0.5) +
   geom_vline(xintercept = 50, colour = "grey", linetype = 2) +
@@ -200,8 +200,8 @@ lm_1 <- lm_robust(score ~ lagdemocrat, data = lmb_subset, clusters = id)
 lm_2 <- lm_robust(score ~ democrat, data = lmb_subset, clusters = id)
 lm_3 <- lm_robust(democrat ~ lagdemocrat, data = lmb_subset, clusters = id)
 
-cli::cli_h1("Original results based on ADA Scores -- Close Elections Sample")
-texreg::knitreg(list(lm_1, lm_2, lm_3), type="text")
+cli::cli_text("Original results based on ADA Scores -- Close Elections Sample")
+texreg::screenreg(list(lm_1, lm_2, lm_3), type="text")
 ```
 
 
@@ -211,7 +211,7 @@ lm_1 <- lm_robust(score ~ lagdemocrat, data = lmb_data, clusters = id)
 lm_2 <- lm_robust(score ~ democrat, data = lmb_data, clusters = id)
 lm_3 <- lm_robust(democrat ~ lagdemocrat, data = lmb_data, clusters = id)
 
-cli::cli_h1("Results based on ADA Scores -- Full Sample")
+cli::cli_text("Results based on ADA Scores -- Full Sample")
 texreg::knitreg(list(lm_1, lm_2, lm_3), type="text")
 ```
 
@@ -223,8 +223,8 @@ lm_1 <- lm_robust(score ~ lagdemocrat + demvoteshare_c, data = lmb_data, cluster
 lm_2 <- lm_robust(score ~ democrat + demvoteshare_c, data = lmb_data, clusters = id)
 lm_3 <- lm_robust(democrat ~ lagdemocrat + demvoteshare_c, data = lmb_data, clusters = id)
 
-cli::cli_h1("Results based on ADA Scores -- Full Sample")
-texreg::knitreg(list(lm_1, lm_2, lm_3), type="text")
+cli::cli_text("Results based on ADA Scores -- Full Sample")
+texreg::screenreg(list(lm_1, lm_2, lm_3), type="text")
 ```
 
 ```{r lmb4, exercise=TRUE, echo=FALSE}
@@ -235,8 +235,8 @@ lm_2 <- lm_robust(score ~ democrat*demvoteshare_c,
 lm_3 <- lm_robust(democrat ~ lagdemocrat*demvoteshare_c, 
                   data = lmb_data, clusters = id)
 
-cli::cli_h1("Results based on ADA Scores -- Full Sample with linear interactions")
-texreg::knitreg(list(lm_1, lm_2, lm_3), type="text")
+cli::cli_text("Results based on ADA Scores -- Full Sample with linear interactions")
+texreg::screenreg(list(lm_1, lm_2, lm_3), type="text")
 ```
 
 
@@ -253,8 +253,8 @@ lm_3 <- lm_robust(democrat ~ lagdemocrat*demvoteshare_c + lagdemocrat*demvotesha
                   data = lmb_data, clusters = id)
 
 
-cli::cli_h1("Results based on ADA Scores -- Full Sample with linear and quadratic interactions")
-texreg::knitreg(list(lm_1, lm_2, lm_3), type="text")
+cli::cli_text("Results based on ADA Scores -- Full Sample with linear and quadratic interactions")
+texreg::screenreg(list(lm_1, lm_2, lm_3), type="text")
 
 ```
 
@@ -276,8 +276,8 @@ lm_3 <- lm_robust(democrat ~ lagdemocrat*demvoteshare_c + lagdemocrat*demvotesha
                   data = lmb_data, clusters = id)
 
 
-cli::cli_h1("Results based on ADA Scores -- Close election sample with linear and quadratic interactions")
-texreg::knitreg(list(lm_1, lm_2, lm_3), type="text")
+cli::cli_text("Results based on ADA Scores -- Close election sample with linear and quadratic interactions")
+texreg::screenreg(list(lm_1, lm_2, lm_3), type="text")
 ```
 
 
@@ -367,6 +367,19 @@ rdplotdensity(density, lmb_data$demvoteshare)
 #### Questions
 - Can you think of another example where you might use the close election design to estimate some average treatment effect?
 - To what degree does this study help us understand the importance of incumbency in a Presidential election?  Why/why not?
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
