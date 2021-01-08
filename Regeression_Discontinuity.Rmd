@@ -1,6 +1,6 @@
 ---
 title: "Causal Inference: <br> *The Mixtape*"
-subtitle: "<it>Difference-in-Differences</it>"
+subtitle: "<it>Regression Discontinuity</it>"
 output: 
   learnr::tutorial:
     css: css/style.css
@@ -10,7 +10,7 @@ runtime: shiny_prerendered
 
 ## Welcome
 
-This is material for the **Difference-in-Differences** chapter in Scott Cunningham's book, [Causal Inference: The Mixtape.](https://mixtape.scunning.com/)
+This is material for the **Regression Discontinuity** chapter in Scott Cunningham's book, [Causal Inference: The Mixtape.](https://mixtape.scunning.com/)
 
 ### Packages needed
 
