@@ -1,0 +1,13 @@
+name: 04-Matching_and_Subclassification
+title: 04-Matching_and_Subclassification
+username:
+account: mixtape
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 3450825
+bundleId: 4068741
+url: https://mixtape.shinyapps.io/04-Matching_and_Subclassification/
+when: 1610031688.22043
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: 01-Probability_and_Regression.html|01-Probability_and_Regression.Rmd|02-Directed_Acyclical_Graphs.html|02-Directed_Acyclical_Graphs.Rmd|03-Potential-Outcomes.Rmd|05-Regeression_Discontinuity.Rmd|06-Instrumental_Variables.Rmd|07-Panel_Data.Rmd|08-Difference_in_Differences.Rmd|09-Synthetic_Control.html|09-Synthetic_Control.Rmd|README.html|README.md|readme_files/fork.jpeg|readme_files/publish.png|readme_files/rstudio_1.jpeg|readme_files/rstudio_learnr_1.jpeg|readme_files/rstudio_learnr_2.jpeg|master

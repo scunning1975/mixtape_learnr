@@ -1,0 +1,13 @@
+name: 05-Regeression_Discontinuity
+title: 05-Regeression_Discontinuity
+username:
+account: mixtape
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 3447580
+bundleId: 4074031
+url: https://mixtape.shinyapps.io/05-Regeression_Discontinuity/
+when: 1610144319.79499
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: 01-Probability_and_Regression.html|01-Probability_and_Regression.Rmd|02-Directed_Acyclical_Graphs.html|02-Directed_Acyclical_Graphs.Rmd|03-Potential-Outcomes.Rmd|04-Matching_and_Subclassification.Rmd|06-Instrumental_Variables.Rmd|07-Panel_Data.Rmd|08-Difference_in_Differences.Rmd|09-Synthetic_Control.html|09-Synthetic_Control.Rmd|README.html|README.md|readme_files/fork.jpeg|readme_files/publish.png|readme_files/rstudio_1.jpeg|readme_files/rstudio_learnr_1.jpeg|readme_files/rstudio_learnr_2.jpeg|master

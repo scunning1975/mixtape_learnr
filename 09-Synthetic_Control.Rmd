@@ -26,7 +26,6 @@ install.packages("haven")
 install.packages("stargazer")
 
 # This chapter only
-install.packages("robustbase")
 install.packages("Synth")
 install.packages("devtools")
 devtools::install_github("bcastanho/SCtools")
@@ -34,7 +33,7 @@ devtools::install_github("bcastanho/SCtools")
 
 ### Load
 
-```{r load, warning=FALSE, message=FALSE}
+```{r load, echo=FALSE, warning=FALSE, message=FALSE}
 library(learnr)
 library(haven)
 library(tidyverse)

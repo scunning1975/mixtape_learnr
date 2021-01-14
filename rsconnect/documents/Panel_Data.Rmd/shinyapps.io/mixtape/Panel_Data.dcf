@@ -1,0 +1,13 @@
+name: Panel_Data
+title: Panel_Data
+username:
+account: mixtape
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 3461265
+bundleId: 4082284
+url: https://mixtape.shinyapps.io/Panel_Data/
+when: 1610375377.89109
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: 01-Probability_and_Regression.html|02-Directed_Acyclical_Graphs.html|09-Synthetic_Control.html|09-Synthetic_Control.Rmd|Difference_in_Differences.Rmd|Directed_Acyclical_Graphs.Rmd|Instrumental_Variables.Rmd|Matching_and_Subclassification.Rmd|Potential-Outcomes.Rmd|Probability_and_Regression.Rmd|README.html|README.md|Regeression_Discontinuity.Rmd|Synthetic_Control.Rmd|readme_files/fork.jpeg|readme_files/publish.png|readme_files/rstudio_1.jpeg|readme_files/rstudio_learnr_1.jpeg|readme_files/rstudio_learnr_2.jpeg
