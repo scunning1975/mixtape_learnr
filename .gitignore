@@ -1,5 +1,6 @@
 .DS_Store
 
 *.RHistory
+.RHistory
 
 *.html
