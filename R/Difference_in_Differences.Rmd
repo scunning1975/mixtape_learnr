@@ -37,6 +37,7 @@ library(learnr)
 library(haven)
 library(tidyverse)
 library(stargazer)
+library(estimatr)
 
 # This chapter only
 library(lfe)
