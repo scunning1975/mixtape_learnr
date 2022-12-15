@@ -51,7 +51,7 @@ options(tutorial.exercise.timelimit = 600)
 
 # read_data function
 read_data <- function(df) {
-  full_path <- paste0("https://raw.github.com/scunning1975/mixtape/master/", df)
+  full_path <- paste0("https://github.com/scunning1975/mixtape/raw/master/", df)
   return(haven::read_dta(full_path))
 }
 ```
